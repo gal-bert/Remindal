@@ -14,9 +14,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
     var arrRemindals = [Reminder]()
 
+    // TODO: Push notification 😭😭😭😭
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -64,11 +65,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RemindalsTableViewCell
         let remindal = arrRemindals[indexPath.row]
         
+
         cell.titleLabel.text = remindal.label
         cell.subtitleLabel.text = "\(remindal.hour!):\(remindal.minute!)"
         cell.toggle.isOn = remindal.isOn
-        
-        //TODO: ON OFF TOGGLE HERE
+        cell.reminder = remindal
         
         return cell
     }

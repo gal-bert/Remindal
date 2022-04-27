@@ -28,8 +28,14 @@ class DetailViewController: UIViewController {
         reminderTextfield.text = reminder!.label
     }
 
+    @IBAction func setRepeat(_ sender: Any) {
+        //TODO: Day repeat func
+        performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
+    }
     
     @IBAction func update(_ sender: Any) {
+        
+        // TODO: Validate empty textfield
         
         let tfh = DateFormatter()
         tfh.dateFormat = "HH"
@@ -63,5 +69,41 @@ class DetailViewController: UIViewController {
         performSegue(withIdentifier: "unwindToHome", sender: self)
         
     }
+    
+    @IBAction func deleteReminder(_ sender: Any) {
+        
+        let alert = UIAlertController(
+            title: "Are you sure?",
+            message: "Are you sure to delete this reminder?",
+            preferredStyle: .actionSheet
+        )
+        
+        alert.addAction(UIAlertAction(
+            title: "Delete",
+            style: .destructive,
+            handler: {_ in
+                let context = self.appDelegate.persistentContainer.viewContext
+                do{
+                    context.delete(self.reminder!)
+                    try context.save()
+                }
+                catch {
+                    print(error.localizedDescription)
+                }
+                self.performSegue(withIdentifier: "unwindToHome", sender: self)
+            }
+        ))
+        
+        alert.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: nil
+        ))
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     
 }

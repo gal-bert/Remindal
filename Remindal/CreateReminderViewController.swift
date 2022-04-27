@@ -19,6 +19,7 @@ class CreateReminderViewController: UIViewController {
     }
     
     @IBAction func setRepeat(_ sender: Any) {
+        // TODO: Create day repeats function
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     
@@ -33,7 +34,7 @@ class CreateReminderViewController: UIViewController {
         tfm.dateFormat = "mm"
         let time_m = tfm.string(from: timepicker.date)
         
-        // TODO: Create day repeats function
+        // TODO: Validate empty textfield
         
         do {
             let context = appDelegate.persistentContainer.viewContext
