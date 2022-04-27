@@ -14,11 +14,8 @@ class CreateReminderViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     @IBAction func setRepeat(_ sender: Any) {

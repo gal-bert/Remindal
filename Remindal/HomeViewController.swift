@@ -10,6 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var reminderToSend:Reminder?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -65,8 +66,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.titleLabel.text = remindal.label
         cell.subtitleLabel.text = "\(remindal.hour!):\(remindal.minute!)"
-        
         cell.toggle.isOn = remindal.isOn
+        
+        //TODO: ON OFF TOGGLE HERE
         
         return cell
     }
@@ -77,7 +79,30 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        performSegue(withIdentifier: "", sender: self)
+        reminderToSend = arrRemindals[indexPath.row]
+        performSegue(withIdentifier: "goToDetailSegue", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            do{
+                let context = appDelegate.persistentContainer.viewContext
+                context.delete(arrRemindals[indexPath.row])
+                try context.save()
+                fetchData()
+                
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDetailSegue" {
+            let dest = segue.destination as! DetailViewController
+            dest.reminder = reminderToSend
+        }
     }
     
     

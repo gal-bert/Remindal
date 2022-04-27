@@ -119,6 +119,9 @@
                                 <buttonConfiguration key="configuration" style="tinted" title="Update Reminder">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="18"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="update:" destination="0CK-op-Uqs" eventType="touchUpInside" id="Muu-kH-zeZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqN-ZJ-okP">
                                 <rect key="frame" x="159.5" y="414" width="95" height="31"/>
