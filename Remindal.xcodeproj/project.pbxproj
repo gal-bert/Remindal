@@ -7,25 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C15D3E128190CDF000FD778 /* RepeatModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3E028190CDF000FD778 /* RepeatModalViewController.swift */; };
+		0C15D3E428190E50000FD778 /* RepeatDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3E328190E50000FD778 /* RepeatDays.swift */; };
+		0C15D3E628194829000FD778 /* RepeatModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3E528194829000FD778 /* RepeatModalTableViewCell.swift */; };
+		0C15D3E828194DDB000FD778 /* CreateReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3E728194DDB000FD778 /* CreateReminderViewController.swift */; };
+		0C15D3EB2819586B000FD778 /* Reminder+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3E92819586B000FD778 /* Reminder+CoreDataClass.swift */; };
+		0C15D3EC2819586B000FD778 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C15D3EA2819586B000FD778 /* Reminder+CoreDataProperties.swift */; };
 		0CAF20BA2816BE240063B1DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF20B92816BE240063B1DA /* AppDelegate.swift */; };
 		0CAF20BC2816BE240063B1DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF20BB2816BE240063B1DA /* SceneDelegate.swift */; };
-		0CAF20BE2816BE240063B1DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF20BD2816BE240063B1DA /* ViewController.swift */; };
+		0CAF20BE2816BE240063B1DA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF20BD2816BE240063B1DA /* HomeViewController.swift */; };
 		0CAF20C12816BE240063B1DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAF20BF2816BE240063B1DA /* Main.storyboard */; };
 		0CAF20C42816BE240063B1DA /* Remindal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CAF20C22816BE240063B1DA /* Remindal.xcdatamodeld */; };
 		0CAF20C62816BE250063B1DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CAF20C52816BE250063B1DA /* Assets.xcassets */; };
 		0CAF20C92816BE250063B1DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CAF20C72816BE250063B1DA /* LaunchScreen.storyboard */; };
+		0CF9EFEB2817F3EA00E9D8D1 /* RemindalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9EFEA2817F3EA00E9D8D1 /* RemindalsTableViewCell.swift */; };
+		0CF9EFED2818045D00E9D8D1 /* Remindal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9EFEC2818045D00E9D8D1 /* Remindal.swift */; };
+		0CF9EFEF281806C500E9D8D1 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9EFEE281806C500E9D8D1 /* Helper.swift */; };
+		0CF9EFF1281816F600E9D8D1 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF9EFF0281816F600E9D8D1 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C15D3E028190CDF000FD778 /* RepeatModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatModalViewController.swift; sourceTree = "<group>"; };
+		0C15D3E328190E50000FD778 /* RepeatDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatDays.swift; sourceTree = "<group>"; };
+		0C15D3E528194829000FD778 /* RepeatModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatModalTableViewCell.swift; sourceTree = "<group>"; };
+		0C15D3E728194DDB000FD778 /* CreateReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderViewController.swift; sourceTree = "<group>"; };
+		0C15D3E92819586B000FD778 /* Reminder+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0C15D3EA2819586B000FD778 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0CAF20B62816BE240063B1DA /* Remindal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remindal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CAF20B92816BE240063B1DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CAF20BB2816BE240063B1DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0CAF20BD2816BE240063B1DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0CAF20BD2816BE240063B1DA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0CAF20C02816BE240063B1DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CAF20C32816BE240063B1DA /* Remindal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remindal.xcdatamodel; sourceTree = "<group>"; };
 		0CAF20C52816BE250063B1DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CAF20C82816BE250063B1DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CAF20CA2816BE250063B1DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CF9EFEA2817F3EA00E9D8D1 /* RemindalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindalsTableViewCell.swift; sourceTree = "<group>"; };
+		0CF9EFEC2818045D00E9D8D1 /* Remindal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remindal.swift; sourceTree = "<group>"; };
+		0CF9EFEE281806C500E9D8D1 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		0CF9EFF0281816F600E9D8D1 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,9 +59,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C15D3E228190E3A000FD778 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0CF9EFEC2818045D00E9D8D1 /* Remindal.swift */,
+				0C15D3E328190E50000FD778 /* RepeatDays.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0CAF20AD2816BE240063B1DA = {
 			isa = PBXGroup;
 			children = (
+				0C15D3E92819586B000FD778 /* Reminder+CoreDataClass.swift */,
+				0C15D3EA2819586B000FD778 /* Reminder+CoreDataProperties.swift */,
 				0CAF20B82816BE240063B1DA /* Remindal */,
 				0CAF20B72816BE240063B1DA /* Products */,
 			);
@@ -60,8 +91,15 @@
 			children = (
 				0CAF20B92816BE240063B1DA /* AppDelegate.swift */,
 				0CAF20BB2816BE240063B1DA /* SceneDelegate.swift */,
-				0CAF20BD2816BE240063B1DA /* ViewController.swift */,
+				0CAF20BD2816BE240063B1DA /* HomeViewController.swift */,
+				0CF9EFEE281806C500E9D8D1 /* Helper.swift */,
+				0C15D3E228190E3A000FD778 /* Model */,
 				0CAF20BF2816BE240063B1DA /* Main.storyboard */,
+				0C15D3E728194DDB000FD778 /* CreateReminderViewController.swift */,
+				0C15D3E528194829000FD778 /* RepeatModalTableViewCell.swift */,
+				0C15D3E028190CDF000FD778 /* RepeatModalViewController.swift */,
+				0CF9EFF0281816F600E9D8D1 /* DetailViewController.swift */,
+				0CF9EFEA2817F3EA00E9D8D1 /* RemindalsTableViewCell.swift */,
 				0CAF20C52816BE250063B1DA /* Assets.xcassets */,
 				0CAF20C72816BE250063B1DA /* LaunchScreen.storyboard */,
 				0CAF20CA2816BE250063B1DA /* Info.plist */,
@@ -141,10 +179,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CAF20BE2816BE240063B1DA /* ViewController.swift in Sources */,
+				0C15D3EB2819586B000FD778 /* Reminder+CoreDataClass.swift in Sources */,
+				0CAF20BE2816BE240063B1DA /* HomeViewController.swift in Sources */,
+				0CF9EFEF281806C500E9D8D1 /* Helper.swift in Sources */,
+				0C15D3E828194DDB000FD778 /* CreateReminderViewController.swift in Sources */,
+				0C15D3E128190CDF000FD778 /* RepeatModalViewController.swift in Sources */,
+				0CF9EFED2818045D00E9D8D1 /* Remindal.swift in Sources */,
 				0CAF20C42816BE240063B1DA /* Remindal.xcdatamodeld in Sources */,
+				0C15D3E428190E50000FD778 /* RepeatDays.swift in Sources */,
+				0C15D3E628194829000FD778 /* RepeatModalTableViewCell.swift in Sources */,
 				0CAF20BA2816BE240063B1DA /* AppDelegate.swift in Sources */,
 				0CAF20BC2816BE240063B1DA /* SceneDelegate.swift in Sources */,
+				0C15D3EC2819586B000FD778 /* Reminder+CoreDataProperties.swift in Sources */,
+				0CF9EFEB2817F3EA00E9D8D1 /* RemindalsTableViewCell.swift in Sources */,
+				0CF9EFF1281816F600E9D8D1 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +345,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -308,7 +357,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -325,6 +374,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -336,7 +386,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
