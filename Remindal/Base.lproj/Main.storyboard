@@ -151,9 +151,11 @@
                     <connections>
                         <outlet property="reminderTextfield" destination="RzQ-n9-uzo" id="HAV-l1-0cX"/>
                         <outlet property="timepicker" destination="pto-gT-lbp" id="hJ2-5T-ciZ"/>
+                        <segue destination="4gP-k7-nHL" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="ueX-AE-CTd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqU-h1-mws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="4gP-k7-nHL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="896" y="773"/>
         </scene>
@@ -278,7 +280,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="save:" destination="7jz-Gh-JKT" eventType="touchUpInside" id="lW3-hz-V7l"/>
-                                    <segue destination="85v-Vl-LAE" kind="unwind" unwindAction="unwindToHome:" id="uqE-Os-k4z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaL-rH-r03">
@@ -311,6 +312,7 @@
                         <outlet property="reminderTextField" destination="8j3-3R-Rrh" id="elS-w6-CXK"/>
                         <outlet property="timepicker" destination="qGJ-xV-dSG" id="iJH-OI-0Ad"/>
                         <segue destination="Pk0-zX-JZK" kind="presentation" identifier="toDaysRepeatSegue" id="cGJ-UE-JIm"/>
+                        <segue destination="85v-Vl-LAE" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHome:" id="xMJ-RD-LNI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mds-cY-kbe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

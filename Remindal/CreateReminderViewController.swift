@@ -58,6 +58,7 @@ class CreateReminderViewController: UIViewController {
             print(error.localizedDescription)
         }
         
+        performSegue(withIdentifier: "unwindToHome", sender: self)
         
     }
 

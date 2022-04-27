@@ -19,9 +19,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        var h = reminder?.hour!
+        var m = reminder?.minute!
+        timepicker.date = dateFormatter.date(from: "\(h!):\(m!)")!
+        
         reminderTextfield.text = reminder!.label
-        
-        
     }
 
     
@@ -30,7 +34,6 @@ class DetailViewController: UIViewController {
         let tfh = DateFormatter()
         tfh.dateFormat = "HH"
         let time_h = tfh.string(from: timepicker.date)
-        print(time)
         
         let tfm = DateFormatter()
         tfm.dateFormat = "mm"
@@ -56,6 +59,8 @@ class DetailViewController: UIViewController {
         catch {
             print(error.localizedDescription)
         }
+        
+        performSegue(withIdentifier: "unwindToHome", sender: self)
         
     }
     
