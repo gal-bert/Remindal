@@ -239,6 +239,14 @@ class DetailViewController: UIViewController, RefreshDataDelegate {
         return temp
     }
     
+    @IBAction func textFieldDidEndOnExit(_ sender: Any) {
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {

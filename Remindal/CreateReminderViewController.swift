@@ -242,7 +242,14 @@ class CreateReminderViewController: UIViewController, RefreshDataDelegate {
     }
     
     
-
+    @IBAction func textFieldDidEndOnExit(_ sender: Any) {
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 extension CreateReminderViewController: UITableViewDelegate, UITableViewDataSource {
