@@ -22,9 +22,6 @@ class DetailViewController: UIViewController, RefreshDataDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    //TODO: Initiliaze repeat label (Everyday, Weekday, Weekends)
-    //TODO: Refine UI component for set repeat days
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +41,7 @@ class DetailViewController: UIViewController, RefreshDataDelegate {
         if segue.identifier == "toDaysRepeatSegue" {
             let dest = segue.destination as! RepeatModalViewController
             dest.reminder = reminder
+            dest.viewDelegate = self
         }
     }
     
@@ -183,8 +181,6 @@ class DetailViewController: UIViewController, RefreshDataDelegate {
         
     }
     
-    //TODO: DELEGATE FUNCTION NOT WORKING
-    // Delegate Function
     func refreshData() {
         tableView.reloadData()
     }

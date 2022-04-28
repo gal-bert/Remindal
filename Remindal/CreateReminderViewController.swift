@@ -80,6 +80,7 @@ class CreateReminderViewController: UIViewController, RefreshDataDelegate {
         if segue.identifier == "toDaysRepeatSegue" {
             let dest = segue.destination as! RepeatModalViewController
             dest.reminder = reminderToSend
+            dest.viewDelegate = self
         }
     }
     
@@ -181,8 +182,7 @@ class CreateReminderViewController: UIViewController, RefreshDataDelegate {
         
     }
     
-    //TODO: DELEGATE FUNCTION NOT WORKING
-    // Delegate Function
+
     func refreshData() {
         tableView.reloadData()
     }
@@ -240,6 +240,8 @@ class CreateReminderViewController: UIViewController, RefreshDataDelegate {
         
         return temp
     }
+    
+    
 
 }
 
@@ -248,11 +250,13 @@ extension CreateReminderViewController: UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
         cell?.textLabel?.text = "Repeat"
         cell?.detailTextLabel?.text = fetchDays()
+        
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
+        
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     
