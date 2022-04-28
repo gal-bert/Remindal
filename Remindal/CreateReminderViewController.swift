@@ -20,6 +20,7 @@ class CreateReminderViewController: UIViewController {
     
     @IBAction func setRepeat(_ sender: Any) {
         // TODO: Create day repeats function
+        
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     

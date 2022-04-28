@@ -197,6 +197,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="icU-D3-XlK">
                                                     <rect key="frame" x="345" y="6.5" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggle:" destination="46A-nL-hwQ" eventType="valueChanged" id="Fu1-je-2Zq"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>

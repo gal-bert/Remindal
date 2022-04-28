@@ -23,20 +23,4 @@ class Helper {
         
     }
     
-//    static func remindalFeeder() -> [Remindal] {
-//        
-//        var array = [Remindal]()
-//        
-//        let remindal  = Remindal(title: "Drink Water", detail: "Drink enough water plz", isOn: true)
-//        let remindal2 = Remindal(title: "Eat Cheezes", detail: "Cheeze 4 lyf is loveee", isOn: false)
-//        let remindal3 = Remindal(title: "Spray Wotah", detail: "Wotah is H2O much love", isOn: true)
-//        
-//        array.append(remindal)
-//        array.append(remindal2)
-//        array.append(remindal3)
-//        
-//        return array
-//        
-//    }
-    
 }

@@ -13,6 +13,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var reminderTextfield: UITextField!
     
     var reminder:Reminder?
+    var days = [Bool]()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -21,8 +22,8 @@ class DetailViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        var h = reminder?.hour!
-        var m = reminder?.minute!
+        let h = reminder?.hour!
+        let m = reminder?.minute!
         timepicker.date = dateFormatter.date(from: "\(h!):\(m!)")!
         
         reminderTextfield.text = reminder!.label
@@ -30,7 +31,22 @@ class DetailViewController: UIViewController {
 
     @IBAction func setRepeat(_ sender: Any) {
         //TODO: Day repeat func
+        days.append(reminder!.monday)
+        days.append(reminder!.tuesday)
+        days.append(reminder!.wednesday)
+        days.append(reminder!.thursday)
+        days.append(reminder!.friday)
+        days.append(reminder!.saturday)
+        days.append(reminder!.sunday)
+        
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDaysRepeatSegue" {
+            let dest = segue.destination as! RepeatModalViewController
+            dest.reminder = reminder
+        }
     }
     
     @IBAction func update(_ sender: Any) {

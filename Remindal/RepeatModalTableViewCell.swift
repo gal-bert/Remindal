@@ -8,6 +8,11 @@
 import UIKit
 
 class RepeatModalTableViewCell: UITableViewCell {
+    
+    var reminder:Reminder?
+    var repeatDays:RepeatDays?
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var toggle: UISwitch!
@@ -23,4 +28,38 @@ class RepeatModalTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func toggle(_ sender: Any) {
+        let context = appDelegate.persistentContainer.viewContext
+        
+        if repeatDays?.days == "Monday" {
+            reminder?.monday = toggle.isOn
+        }
+        else if repeatDays?.days == "Tuesday" {
+            reminder?.tuesday = toggle.isOn
+        }
+        else if repeatDays?.days == "Wednesday" {
+            reminder?.wednesday = toggle.isOn
+        }
+        else if repeatDays?.days == "Thursday" {
+            reminder?.thursday = toggle.isOn
+        }
+        else if repeatDays?.days == "Friday" {
+            reminder?.friday = toggle.isOn
+        }
+        else if repeatDays?.days == "Saturday" {
+            reminder?.saturday = toggle.isOn
+        }
+        else if repeatDays?.days == "Sunday" {
+            reminder?.sunday = toggle.isOn
+        }
+        
+        do {
+            try context.save()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
 }
