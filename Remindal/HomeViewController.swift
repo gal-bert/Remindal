@@ -76,10 +76,58 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! RemindalsTableViewCell
         let remindal = arrRemindals[indexPath.row]
         
-        //TODO: Initiliaze repeat label (Everyday, Weekday, Weekends)
+        var temp = ""
+        var daysCount = 0
+        var weekdayCount = 0
+        var weekendCount = 0
+        if remindal.monday == true {
+            temp.append(" Mon")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if remindal.tuesday == true{
+            temp.append(" Tue")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if remindal.wednesday == true {
+            temp.append(" Wed")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if remindal.thursday == true {
+            temp.append(" Thu")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if remindal.friday == true {
+            temp.append(" Fri")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if remindal.saturday == true {
+            temp.append(" Sat")
+            daysCount += 1
+            weekendCount += 1
+        }
+        if remindal.sunday == true {
+            temp.append(" Sun")
+            daysCount += 1
+            weekendCount += 1
+        }
+        
+        temp = String(temp.dropFirst())
+        
+        if daysCount == 7 {
+            temp = "Everyday"
+        } else if weekdayCount == 5 && weekendCount == 0{
+            temp = "Every Weekday"
+        } else if weekendCount == 2 && weekdayCount == 0{
+            temp = "Every Weekend"
+        }
 
         cell.titleLabel.text = remindal.label
-        cell.subtitleLabel.text = "\(remindal.hour!):\(remindal.minute!)"
+        cell.subtitleLabel.text = "\(temp) - \(remindal.hour!):\(remindal.minute!)"
         cell.toggle.isOn = remindal.isOn
         cell.reminder = remindal
         
