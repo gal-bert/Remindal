@@ -13,7 +13,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var reminderTextfield: UITextField!
     
     var reminder:Reminder?
-    var days = [Bool]()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -30,15 +29,6 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func setRepeat(_ sender: Any) {
-        //TODO: Day repeat func
-        days.append(reminder!.monday)
-        days.append(reminder!.tuesday)
-        days.append(reminder!.wednesday)
-        days.append(reminder!.thursday)
-        days.append(reminder!.friday)
-        days.append(reminder!.saturday)
-        days.append(reminder!.sunday)
-        
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     
@@ -64,17 +54,9 @@ class DetailViewController: UIViewController {
         do {
             let context = appDelegate.persistentContainer.viewContext
             
-            reminder?.isOn = true
             reminder?.label = reminderTextfield.text
             reminder?.hour = time_h
             reminder?.minute = time_m
-            reminder?.monday = true
-            reminder?.tuesday = true
-            reminder?.wednesday = true
-            reminder?.thursday = true
-            reminder?.friday = true
-            reminder?.saturday = true
-            reminder?.sunday = true
 
             try context.save()
         }

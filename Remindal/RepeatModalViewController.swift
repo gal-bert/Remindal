@@ -43,6 +43,7 @@ extension RepeatModalViewController: UITableViewDelegate, UITableViewDataSource 
         
         let repeatDays = arrDays[indexPath.row].days
         
+       
         if repeatDays == "Monday" {
             cell.toggle.isOn = reminder!.monday
         }
@@ -64,6 +65,10 @@ extension RepeatModalViewController: UITableViewDelegate, UITableViewDataSource 
         else if repeatDays == "Sunday" {
             cell.toggle.isOn = reminder!.sunday
         }
+        
+        
+        
+        
         
         return cell
     }
