@@ -34,18 +34,8 @@ class DetailViewController: UIViewController {
         timepicker.date = dateFormatter.date(from: "\(h!):\(m!)")!
         
         reminderTextfield.text = reminder!.label
-        
-        
-        
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        if !isUpdating {
-//            checkDaysRepeat()
-//            print("Check days called")
-//        }
-//        print("View Dissapear")
-//    }
 
     @IBAction func setRepeat(_ sender: Any) {
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
@@ -98,11 +88,7 @@ class DetailViewController: UIViewController {
             checkDaysRepeat()
             performSegue(withIdentifier: "unwindToHome", sender: self)
         }
-        
-        
     }
-    
-    
     
     @IBAction func deleteReminder(_ sender: Any) {
         
