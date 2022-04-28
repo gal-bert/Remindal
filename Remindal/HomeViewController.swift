@@ -99,6 +99,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             do{
+                
+                let center = UNUserNotificationCenter.current()
+                var notificationToRemove = [String]()
+                for i in 1...7 {
+                    notificationToRemove.append("\(arrRemindals[indexPath.row].uuidString!)-\(i)")
+                }
+                center.removePendingNotificationRequests(withIdentifiers: notificationToRemove)
+                
                 let context = appDelegate.persistentContainer.viewContext
                 context.delete(arrRemindals[indexPath.row])
                 try context.save()
