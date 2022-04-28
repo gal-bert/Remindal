@@ -2,7 +2,7 @@
 //  Reminder+CoreDataClass.swift
 //  Remindal
 //
-//  Created by Gregorius Albert on 27/04/22.
+//  Created by Gregorius Albert on 28/04/22.
 //
 //
 

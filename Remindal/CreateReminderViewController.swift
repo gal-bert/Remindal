@@ -18,6 +18,12 @@ class CreateReminderViewController: UIViewController {
     
     var isCreating:Bool = false
     
+    var t_h = ""
+    var t_m = ""
+    
+    //TODO: Initiliaze repeat label (Everyday, Weekday, Weekends)
+    //TODO: Refine UI component for set repeat days
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +49,7 @@ class CreateReminderViewController: UIViewController {
         reminder.friday = true
         reminder.saturday = true
         reminder.sunday = true
+        reminder.uuidString = UUID().uuidString
         
         do {
             context.insert(reminder)
@@ -69,8 +76,6 @@ class CreateReminderViewController: UIViewController {
     }
     
     @IBAction func setRepeat(_ sender: Any) {
-        
-        
         performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     
@@ -86,40 +91,96 @@ class CreateReminderViewController: UIViewController {
         let tfh = DateFormatter()
         tfh.dateFormat = "HH"
         let time_h = tfh.string(from: timepicker.date)
-        print(time)
+        t_h = time_h
         
         let tfm = DateFormatter()
         tfm.dateFormat = "mm"
         let time_m = tfm.string(from: timepicker.date)
+        t_m = time_m
         
-        // TODO: Validate empty textfield
         
-        do {
-            let context = appDelegate.persistentContainer.viewContext
+        let labelData = reminderTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        if labelData == "" || labelData == nil {
+            present(Helper.pushAlert(title: "Hey!", message: "Your reminder label can't be empty!"), animated: true)
+        } else {
+            do {
+                let context = appDelegate.persistentContainer.viewContext
+                
+                reminderToSend!.label = reminderTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+                reminderToSend!.hour = time_h
+                reminderToSend!.minute = time_m
+                
+                try context.save()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        
             
-            reminderToSend!.label = reminderTextField.text
-            reminderToSend!.hour = time_h
-            reminderToSend!.minute = time_m
-            
-            try context.save()
-        }
-        catch {
-            print(error.localizedDescription)
+            isCreating = true
+            checkDaysRepeat()
+            performSegue(withIdentifier: "unwindToHome", sender: self)
         }
         
-        isCreating = true
-        performSegue(withIdentifier: "unwindToHome", sender: self)
+    }
+    
+    func checkDaysRepeat() {
+        /// Gregorian Calendar
+        /// Weekday 1 starts on Sunday
+        if reminderToSend?.monday == true {
+            registerNotification(weekday: 2)
+        }
+        if reminderToSend?.tuesday == true{
+            registerNotification(weekday: 3)
+        }
+        if reminderToSend?.wednesday == true {
+            registerNotification(weekday: 4)
+        }
+        if reminderToSend?.thursday == true {
+            registerNotification(weekday: 5)
+        }
+        if reminderToSend?.friday == true {
+            registerNotification(weekday: 6)
+        }
+        if reminderToSend?.saturday == true {
+            registerNotification(weekday: 7)
+        }
+        if reminderToSend?.sunday == true {
+            registerNotification(weekday: 1)
+        }
+    }
+    
+    func registerNotification(weekday:Int) -> Void {
+        let content = UNMutableNotificationContent()
+        content.title = "Hey, it's \(t_h):\(t_m)!"
+        content.body = "\(reminderTextField!.text!)"
+        
+        var dc = DateComponents()
+        dc.weekday = weekday
+        dc.hour = Int(t_h)
+        dc.minute = Int(t_m)
+        let date = Calendar(identifier: .gregorian).date(from: dc)
+        
+        var dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date!)
+        dateComponents.weekday = weekday
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(
+            identifier: "\(reminderToSend!.uuidString!)-\(weekday)",
+            content: content,
+            trigger: trigger
+        )
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request){ (error) in
+            
+        }
+        print(dc)
+        print(dateComponents)
+        print("\(reminderToSend!.uuidString!)-\(weekday)\n")
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

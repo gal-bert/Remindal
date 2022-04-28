@@ -11,9 +11,10 @@
         <attribute name="sunday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="thursday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="tuesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="uuidString" optional="YES" attributeType="String"/>
         <attribute name="wednesday" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Reminder" positionX="-63" positionY="-18" width="128" height="194"/>
+        <element name="Reminder" positionX="-63" positionY="-18" width="128" height="209"/>
     </elements>
 </model>
