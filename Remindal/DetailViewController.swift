@@ -7,10 +7,11 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-
+class DetailViewController: UIViewController, RefreshDataDelegate {
+    
     @IBOutlet weak var timepicker: UIDatePicker!
     @IBOutlet weak var reminderTextfield: UITextField!
+    @IBOutlet weak var tableView: UITableView!
     
     var reminder:Reminder?
     
@@ -27,6 +28,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let h = reminder?.hour!
@@ -34,11 +38,6 @@ class DetailViewController: UIViewController {
         timepicker.date = dateFormatter.date(from: "\(h!):\(m!)")!
         
         reminderTextfield.text = reminder!.label
-    }
-    
-
-    @IBAction func setRepeat(_ sender: Any) {
-        performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -151,6 +150,8 @@ class DetailViewController: UIViewController {
     }
     
     func registerNotification(weekday:Int) -> Void {
+        //TODO: Add Sound on notify
+        
         let content = UNMutableNotificationContent()
         content.title = "Hey, it's \(t_h):\(t_m)!"
         content.body = "\(reminderTextfield!.text!)"
@@ -182,4 +183,82 @@ class DetailViewController: UIViewController {
         
     }
     
+    //TODO: DELEGATE FUNCTION NOT WORKING
+    // Delegate Function
+    func refreshData() {
+        tableView.reloadData()
+    }
+    
+    func fetchDays() -> String {
+        var temp = ""
+        var daysCount = 0
+        var weekdayCount = 0
+        var weekendCount = 0
+        if reminder!.monday == true {
+            temp.append(" Mon")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminder!.tuesday == true{
+            temp.append(" Tue")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminder!.wednesday == true {
+            temp.append(" Wed")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminder!.thursday == true {
+            temp.append(" Thu")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminder!.friday == true {
+            temp.append(" Fri")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminder!.saturday == true {
+            temp.append(" Sat")
+            daysCount += 1
+            weekendCount += 1
+        }
+        if reminder!.sunday == true {
+            temp.append(" Sun")
+            daysCount += 1
+            weekendCount += 1
+        }
+        
+        temp = String(temp.dropFirst())
+        
+        if daysCount == 7 {
+            temp = "Everyday"
+        } else if weekdayCount == 5 && weekendCount == 0{
+            temp = "Every Weekday"
+        } else if weekendCount == 2 && weekdayCount == 0{
+            temp = "Every Weekend"
+        }
+        
+        return temp
+    }
+    
+}
+
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = "Repeat"
+        cell?.detailTextLabel?.text = fetchDays()
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }

@@ -78,6 +78,8 @@ class RemindalsTableViewCell: UITableViewCell {
     }
     
     func registerNotification(weekday:Int) -> Void {
+        //TODO: Add Sound on notify
+        
         let content = UNMutableNotificationContent()
         content.title = "Hey, it's \(reminder!.hour!):\(reminder!.minute!)!"
         content.body = "\(reminder!.label!)"

@@ -7,9 +7,10 @@
 
 import UIKit
 
-class CreateReminderViewController: UIViewController {
+class CreateReminderViewController: UIViewController, RefreshDataDelegate {
 
     @IBOutlet weak var timepicker: UIDatePicker!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var reminderTextField: UITextField!
     
     var reminderToSend:Reminder?
@@ -21,11 +22,11 @@ class CreateReminderViewController: UIViewController {
     var t_h = ""
     var t_m = ""
     
-    //TODO: Initiliaze repeat label (Everyday, Weekday, Weekends)
-    //TODO: Refine UI component for set repeat days
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let context = appDelegate.persistentContainer.viewContext
         let reminder = Reminder(context: context)
@@ -74,11 +75,7 @@ class CreateReminderViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func setRepeat(_ sender: Any) {
-        performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
-    }
-    
+        
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDaysRepeatSegue" {
             let dest = segue.destination as! RepeatModalViewController
@@ -151,6 +148,8 @@ class CreateReminderViewController: UIViewController {
     }
     
     func registerNotification(weekday:Int) -> Void {
+        //TODO: Add Sound on notify
+        
         let content = UNMutableNotificationContent()
         content.title = "Hey, it's \(t_h):\(t_m)!"
         content.body = "\(reminderTextField!.text!)"
@@ -181,6 +180,83 @@ class CreateReminderViewController: UIViewController {
         print("\(reminderToSend!.uuidString!)-\(weekday)\n")
         
     }
+    
+    //TODO: DELEGATE FUNCTION NOT WORKING
+    // Delegate Function
+    func refreshData() {
+        tableView.reloadData()
+    }
+    
+    func fetchDays() -> String {
+        var temp = ""
+        var daysCount = 0
+        var weekdayCount = 0
+        var weekendCount = 0
+        if reminderToSend!.monday == true {
+            temp.append(" Mon")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminderToSend!.tuesday == true{
+            temp.append(" Tue")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminderToSend!.wednesday == true {
+            temp.append(" Wed")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminderToSend!.thursday == true {
+            temp.append(" Thu")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminderToSend!.friday == true {
+            temp.append(" Fri")
+            daysCount += 1
+            weekdayCount += 1
+        }
+        if reminderToSend!.saturday == true {
+            temp.append(" Sat")
+            daysCount += 1
+            weekendCount += 1
+        }
+        if reminderToSend!.sunday == true {
+            temp.append(" Sun")
+            daysCount += 1
+            weekendCount += 1
+        }
+        
+        temp = String(temp.dropFirst())
+        
+        if daysCount == 7 {
+            temp = "Everyday"
+        } else if weekdayCount == 5 && weekendCount == 0{
+            temp = "Every Weekday"
+        } else if weekendCount == 2 && weekdayCount == 0{
+            temp = "Every Weekend"
+        }
+        
+        return temp
+    }
 
+}
 
+extension CreateReminderViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = "Repeat"
+        cell?.detailTextLabel?.text = fetchDays()
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        performSegue(withIdentifier: "toDaysRepeatSegue", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
 }

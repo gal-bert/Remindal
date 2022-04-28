@@ -16,8 +16,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var arrRemindals = [Reminder]()
-
-    // TODO: Push notification 😭😭😭😭
     
     override func viewDidLoad() {
         

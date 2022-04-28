@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol RefreshDataDelegate {
+    func refreshData()
+}
+
 class RepeatModalViewController: UIViewController {
+    
+    var viewDelegate: RefreshDataDelegate?
     
     var arrDays = Helper.repeatDaysFeeder()
         
@@ -28,6 +34,10 @@ class RepeatModalViewController: UIViewController {
             presentationController.prefersGrabberVisible = true
         }
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.viewDelegate?.refreshData()
     }
     
 }
@@ -65,10 +75,6 @@ extension RepeatModalViewController: UITableViewDelegate, UITableViewDataSource 
         else if repeatDays == "Sunday" {
             cell.toggle.isOn = reminder!.sunday
         }
-        
-        
-        
-        
         
         return cell
     }
